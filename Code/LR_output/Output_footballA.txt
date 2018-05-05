@@ -1,0 +1,3 @@
+Graph: footballA
+Leighton Rao Relaxation: 2.1174603174593383 
+Time for Lazy LR method: 567.023274724 

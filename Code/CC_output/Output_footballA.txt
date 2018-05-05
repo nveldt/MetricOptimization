@@ -1,0 +1,3 @@
+Graph: footballA
+LP Relaxation Obj: 81.21313579170115 
+Compute Time: 2.070933317 

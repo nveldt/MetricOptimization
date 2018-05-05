@@ -1,0 +1,12 @@
+Graph: lesmisA
+Leighton Rao Relaxation: 0.3447761194029851 
+Time for Lazy LR method: 154.03582005 
+Graph: dolphinsA
+Leighton Rao Relaxation: 0.4320557491289203 
+Time for Lazy LR method: 57.917267663 
+Graph: adjnounA
+Leighton Rao Relaxation: 1.009009009009009 
+Time for Lazy LR method: 1017.076905623 
+Graph: footballA
+Leighton Rao Relaxation: 2.1174603174602895 
+Time for Lazy LR method: 2063.689639471 

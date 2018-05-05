@@ -1,0 +1,7 @@
+Output from running the CC Dykstra MCLP method 
+Graph: KarateA
+Input Parameters: Gamma = 50.0, GapTol = 1.0e-6, ConTol = 1.0e-10 
+Output satisfies constraints to within 0.0 
+Relative Duality Gap = 7.593051688653945e-8 
+LP Relaxation Obj: 21.67038659629926 
+Compute Time: 0.762076027

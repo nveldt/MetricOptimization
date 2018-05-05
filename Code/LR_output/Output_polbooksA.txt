@@ -1,0 +1,3 @@
+Graph: polbooksA
+Leighton Rao Relaxation: 0.7238751814223475 
+Time for Lazy LR method: 117.582446235 

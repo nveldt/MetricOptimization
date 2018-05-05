@@ -1,0 +1,3 @@
+Graph: BuckGraph
+Leighton Rao Relaxation: 0.19285714285714295 
+Time for Lazy LR method: 7070.574269912 

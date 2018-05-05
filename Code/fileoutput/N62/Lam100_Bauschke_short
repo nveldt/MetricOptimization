@@ -1,0 +1,10 @@
+Intermediate convergence results
+ Bauschke on Graph of size 62
+Lambda = 0.1, gamma = 50.0, Final Tolerance = 0.001, Triangle Constraint Tolerance = 0.01 
+Iter 28, Residual = 0.089 < Tol  = 0.1,  LP objective = 56.688, Triangle Constraint Satisfaction: 0.16544521907028653
+Iter 36, Residual = 0.049 < Tol  = 0.05,  LP objective = 56.777, Triangle Constraint Satisfaction: 0.12412691034843776
+Iter 55, Residual = 0.024 < Tol  = 0.025,  LP objective = 56.801, Triangle Constraint Satisfaction: 0.07737313437244059
+Iter 103, Residual = 0.01 < Tol  = 0.01,  LP objective = 56.785, Triangle Constraint Satisfaction: 0.04068734155037587
+Iter 170, Residual = 0.005 < Tol  = 0.005,  LP objective = 56.535, Triangle Constraint Satisfaction: 0.025657814239141985
+Iter 276, Residual = 0.002 < Tol  = 0.0025,  LP objective = 56.617, Triangle Constraint Satisfaction: 0.015561161224741937
+Final: Iter 540, Residual = 0.001 < Tol = 0.001, LP objective = 56.673, Triangle Constraint Satisfaction: 0.005402825277205187

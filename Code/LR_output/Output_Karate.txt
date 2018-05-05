@@ -1,0 +1,1 @@
+Leighton Rao Relaxation: 0.9379310344827586Time for Lazy LR method: 0.514565619 

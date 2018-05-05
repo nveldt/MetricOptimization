@@ -1,0 +1,3 @@
+Graph: polbooksA
+LP Relaxation Obj: 81.28325159307943 
+Compute Time: 4.309970265 

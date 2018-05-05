@@ -1,0 +1,24 @@
+Graph: KarateA, nodes = 34, edges = 78.0, gamma = 1.0 
+Obj = 0.9860591234637038, Its = 199, Gap = 9.895850080529085e-7, ConVio = 4.163336342344337e-17, ApproxRatio = 1.7480541669165153, Time = 0.657557444
+ 
+Graph: dolphinsA, nodes = 62, edges = 159.0, gamma = 1.0 
+Obj = 0.4320557491289199, Its = 419, Gap = 5.405878366010874e-7, ConVio = 0.0, ApproxRatio = 1.8785822839719624, Time = 0.870991867
+ 
+Graph: lesmisA, nodes = 77, edges = 254.0, gamma = 1.0 
+Obj = 0.34477611940298486, Its = 279, Gap = 6.887674603841389e-7, ConVio = 0.0, ApproxRatio = 1.7770036868710046, Time = 0.868006508
+ 
+Graph: adjnounA, nodes = 112, edges = 425.0, gamma = 1.0 
+Obj = 1.0090090090090096, Its = 279, Gap = 5.515757361181983e-7, ConVio = 0.0, ApproxRatio = 1.7778384955303477, Time = 1.722385983
+ 
+Graph: BuckGraph, nodes = 90, edges = 169.0, gamma = 1.0 
+Obj = 0.19285714285714278, Its = 3129, Gap = 9.266267487905229e-7, ConVio = 0.0, ApproxRatio = 1.9464768726002335, Time = 5.185241362
+ 
+Graph: footballA, nodes = 115, edges = 613.0, gamma = 1.0 
+Obj = 2.119669444283571, Its = 349, Gap = 2.901464525362969e-10, ConVio = 3.469446951953614e-18, ApproxRatio = 1.9297107060887384, Time = 1.813193503
+ 
+Graph: jazzA, nodes = 198, edges = 2742.0, gamma = 1.0 
+Obj = 1.0088216729366022, Its = 389, Gap = 2.17930167341719e-7, ConVio = 2.7755575615628914e-17, ApproxRatio = 1.7597385142818907, Time = 13.659935197
+ 
+Graph: polbooksA, nodes = 105, edges = 441.0, gamma = 1.0 
+Obj = 0.7238751814223514, Its = 869, Gap = 9.260714455737232e-7, ConVio = 0.0, ApproxRatio = 1.9386232747484813, Time = 3.912613563
+ 

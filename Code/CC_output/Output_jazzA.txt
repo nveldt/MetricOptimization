@@ -1,0 +1,3 @@
+Graph: jazzA
+LP Relaxation Obj: 250.51597323134195 
+Compute Time: 498.65364035 

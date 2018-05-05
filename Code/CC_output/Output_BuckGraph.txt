@@ -1,0 +1,3 @@
+Graph: BuckGraph
+LP Relaxation Obj: 45.211623333454284 
+Compute Time: 0.372953307 

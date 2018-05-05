@@ -1,0 +1,3 @@
+Graph: lesmisA
+LP Relaxation Obj: 60.18450410831929 
+Compute Time: 9.710101702 
