@@ -1,3 +1,0 @@
-Graph: jazzA
-Leighton Rao Relaxation: 1.0050761421319796 
-Time for Lazy LR method: 698.407246123 

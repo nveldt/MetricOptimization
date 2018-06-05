@@ -1,3 +1,0 @@
-Graph: dolphinsA
-Leighton Rao Relaxation: 0.4320557491289199 
-Time for Lazy LR method: 9.380858874 

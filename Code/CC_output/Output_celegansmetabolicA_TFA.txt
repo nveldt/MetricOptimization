@@ -1,3 +1,0 @@
-Graph: celegansmetabolicA
-LP Relaxation Obj: 2073.1094642624307 
-Compute Time: 8039.240271563 

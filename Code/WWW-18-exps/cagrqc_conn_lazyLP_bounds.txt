@@ -1,1 +1,0 @@
-LP bound for LambdaCC for (largest connected component of) cagrqc network using lazy constraints method.

@@ -1,7 +1,0 @@
-Graph: celegansneuralA, nodes = 297, edges = 2148, gamma = 5.0 
-
-on my mac:
-celegansneuralA &  297 & 2148 &  &  & & 1.0034 & 290.85 & 1.0048881880144063 \\ 
-
-on skyline:
-celegansneuralA &  297 & 2148 &  &  & & 1.0034 & 236.54 & 1.0048881880144063 \\

@@ -1,3 +1,0 @@
-Graph: adjnounA
-LP Relaxation Obj: 142.25883810649444 
-Compute Time: 91.99419618 

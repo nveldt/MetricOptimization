@@ -1,8 +1,0 @@
-Intermediate convergence results
- Dykstra on graph of size 200
-Lambda = 0.1, gamma = 50.0, Final Tolerance = 0.01, Triangle Constraint Tolerance = 0.01 
-Iter 1, Residual = 0.0 < Tol  = 0.1,  LP objective = 0.0, Triangle Constraint Satisfaction: 1.000000000000007
-Iter 2, Residual = 0.0 < Tol  = 0.05,  LP objective = 0.0, Triangle Constraint Satisfaction: 1.0000000000000107
-Iter 3, Residual = 0.0 < Tol  = 0.025,  LP objective = 0.0, Triangle Constraint Satisfaction: 1.0000000000000107
-Iter 4, Residual = 0.0 < Tol  = 0.01,  LP objective = 0.0, Triangle Constraint Satisfaction: 1.0000000000000107
-Terminated after 5000 iterations. Final residual = 0.005: LP objective = 396.787, Triangle Constraint Satisfaction: 0.047688133501129215

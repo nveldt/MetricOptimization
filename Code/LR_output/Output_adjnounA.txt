@@ -1,3 +1,0 @@
-Graph: adjnounA
-Leighton Rao Relaxation: 1.009009009009009 
-Time for Lazy LR method: 689.739097256 

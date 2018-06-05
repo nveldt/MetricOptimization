@@ -1,3 +1,0 @@
-Graph: KarateA
-LP Relaxation Obj: 21.67038659629926 
-Compute Time: 0.281494706 

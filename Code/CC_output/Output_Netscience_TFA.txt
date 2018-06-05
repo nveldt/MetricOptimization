@@ -1,3 +1,0 @@
-Graph: Netscience
-LP Relaxation Obj: 190.69619308242972 
-Compute Time: 92.73939136 

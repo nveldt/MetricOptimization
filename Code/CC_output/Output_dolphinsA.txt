@@ -1,3 +1,0 @@
-Graph: dolphinsA
-LP Relaxation Obj: 42.73374279065996 
-Compute Time: 0.433733138 

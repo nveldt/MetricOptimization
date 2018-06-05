@@ -1,3 +1,0 @@
-Graph: lesmisA
-Leighton Rao Relaxation: 0.3447761194029851 
-Time for Lazy LR method: 8.733434201 
