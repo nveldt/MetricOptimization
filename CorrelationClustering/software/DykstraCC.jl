@@ -4,7 +4,7 @@
 #
 # Last updated Nate Veldt on May 4, 2018
 
-include("TFA_Library_Helper.jl")
+include("DykstraCC_Helper.jl")
 
 # DYKSTRA_LAMCC_TFA
 #
@@ -48,7 +48,7 @@ function Dykstra_CC_TFA(A::SparseMatrixCSC{Float64,Int64},W::Matrix{Float64},D::
                         filename::String="DykstraCCoutput",gam::Float64=10.0,maxits::Int64=1000,statusFrequency::Int64=20,stagnationTol::Float64=1e-12)
         n = size(A,1)
         open(filename, "w") do f
-                write(f, "Output from Hildreth's (i.e. Dykstra's) LambdaCC Triangle Fixing Algorithm\n")
+                write(f, "Output from DykstraCC \n")
                 write(f, "Gamma = $gam, Primal/Dual Gap tolerance = $GapTol, Constraint Tolerance = $ConTol \n")
         end
 

@@ -1,6 +1,3 @@
-
-
-
 using JuMP
 using Gurobi
 
@@ -24,7 +21,7 @@ function find_violations!(D::Matrix{Float64}, violations::Vector{Tuple{Int,Int,I
 
   # We only need this satisfied to within a given tolerance, since the
   # optimization software will only solve it to within a certain tolerance
-  # anyways. This can be tweaked if necessary, epsi = 1e-8 yields good results.
+  # anyways. This can be tweaked if necessary.
   epsi = 1e-8
   @inbounds for i = 1:n-2
        for j = i+1:n-1
@@ -50,6 +47,20 @@ function find_violations!(D::Matrix{Float64}, violations::Vector{Tuple{Int,Int,I
   end
 end
 
+## Use Gurobi to solve the Correlation Clustering LP relaxation in the case
+# of weighted graphs where a positve weight is given for each pair of vertices.
+#
+# Correlation clustering is
+#
+# A is the adjacency matrix indicator for the underlying graph where you consider only positive edges
+#       i.e. Aij = 1 if (i,j) is a positive edge, i.e. W[i,j] > 0
+#           Aij = 0 if W[i,j] < 0
+#
+# See Gurobi Parameter explanations online at: http://www.gurobi.com/documentation/8.0/refman/parameters.html
+#
+# The default is to use an interior point solver with zero crossover strategy
+# (i.e. don't bother to convert an interior solution to vertex of the constraint simplex).
+# Output should satisfy constraints to within FeasTol, default of 1e-6
 function LazyGeneralCC(A,W,time_limit::Int64=Int64(1e10),FeasTol::Float64=1e-6,SolverMethod::Int64=2, CrossoverStrategy::Int64 =0, OutputFile::String = "LastGurobiOutput")
     n = size(W,1)
     W = W - diagm(diag(W))

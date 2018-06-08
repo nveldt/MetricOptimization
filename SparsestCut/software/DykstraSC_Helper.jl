@@ -1,23 +1,5 @@
-# A Helper Library so that I can keep my other .jl files a little cleaner
-
-# Builds the weights matrix and desired distance matrix D
-# for a LambdaCC LP relaxation problem
-function LamCC_DandW(A::SparseMatrixCSC{Float64,Int64},lam::Float64)
-  n = size(A,1)
-  D = zeros(Float64,n,n)
-  W = (1-lam)*ones(n,n)
-  for i = 1:n-1
-      for j = i+1:n
-          if A[i,j] < .1
-              D[j,i] = 1
-              W[j,i] = lam
-          end
-      end
-  end
-  return D, W
-end
-
-# Initialize solution vector and weights matrix for the Leighton Rao QP
+# Initialize solution vector and weights matrix for the quadratic regularization
+# of the Leighton Rao LP relaxation for sparsest cut.
 function LeightonRaoQP_Initialize(A::SparseMatrixCSC{Float64,Int64},lam::Float64,gam::Float64)
   n = size(A,1)
   # X has to be dense
@@ -36,6 +18,14 @@ function LeightonRaoQP_Initialize(A::SparseMatrixCSC{Float64,Int64},lam::Float64
   end
   return X, tril(W)
 end
+
+# Compute the Leighton-Rao LP objective function score
+function LR_obj(A::SparseMatrixCSC{Float64,Int64},X::Matrix{Float64})
+  n = size(A,1)
+  lr = sum((A[j,i]*X[j,i] for i=1:n-1 for j = i+1:n))
+  return lr
+end
+
 
 # StagnationCheck
 # Given primal/dual function scores, check whether they have changed by an insignificant amount
@@ -78,22 +68,6 @@ function TriangleCheck(D::Matrix{Float64},tol::Float64)
   return true
 end
 
-# Check if the double loop constraints are satisfied to within tolerance
-function DoubleCheck(E::Matrix{Float64},F::Matrix{Float64},tol::Float64)
-
-n = size(E,1)
-for i = 1:n-1
-  for j = i+1:n
-    eij = E[j,i]
-    fij = F[j,i]
-    if eij - fij > tol || -eij - fij > tol
-      return false
-    end
-  end
-end
-return true
-
-end
 
 # FullTriangleCheck
 # Returns the worst triangle violation in the whole matrix
@@ -148,17 +122,6 @@ function FullConstraintCheck(X::Matrix{Float64},E::Matrix{Float64},F::Matrix{Flo
   return round(max(tri,doublecheck),4), round(tri,4)
 end
 
-
-# Evaluate the LambdaCC LP relaxed objective, given a distance matrix D
-function LPcc_obj(A::SparseMatrixCSC{Float64,Int64},D::Matrix{Float64},lam::Float64)
-  n = size(A,1)
-  # assert(issymmetric(D))
-  # assert(issymmetric(A))
-  numedges = countnz(A)/2
-  lccBound = sum((A[j,i]-lam)*D[j,i] for i=1:n-1 for j = i+1:n) + lam*(n*(n-1)/2 - numedges)
-  return lccBound
-end
-
 # This is effectively a vector dot product, but for matrices.
 # Specifically, this corresponds to the linear program objective score for
 # variables F.
@@ -197,10 +160,4 @@ function xWnorm(W::Matrix{Float64},X::Matrix{Float64})
     end
   end
   return out
-end
-
-function LR_obj(A::SparseMatrixCSC{Float64,Int64},X::Matrix{Float64})
-  n = size(A,1)
-  lr = sum((A[j,i]*X[j,i] for i=1:n-1 for j = i+1:n))
-  return lr
 end

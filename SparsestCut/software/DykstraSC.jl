@@ -1,16 +1,36 @@
 #
-# Code for quadratic programming version of Leighton-Rao relaxation
+# Code for quadratic programming regulaziation of Leighton-Rao LP relaxation
+# for sparsest cut.
 #
 
-include("TFA_Library_Helper.jl")
+include("DykstraSC_Helper.jl")
 
-# DYKSTRA_LeightonRao_TFA
+# DYKSTRA_SC
 #
-# A Triangle Fixing Algorithm for the Leighton-Rao Relaxation of sparsest cut
+# Dykstra-based projection method for solving a quadratic program which is the
+# regularized version of the Leighton-Rao Linear Programming relaxation for
+# sparsest cut.
 #
-function Dykstra_LeightonRao_TFA(A::SparseMatrixCSC{Float64,Int64},GapTol::Float64=1e-3,ConTol::Float64=1e-5,
+# Paramters:
+#
+# A = adjacency matrix of an undirected, unweighted graph
+# GapTol = the desired relative duality gap tolerance we wish to achieve for convergence
+# ConTol = tolerance for constraint violations
+# lam, gam = paramters controlling the relationship between the original LP
+#               and the quadratic program which is solved in practice here.
+# statusFreqcuency = controls how often we perform a full convergence check,
+#                       which involves a full check for the maximum constraint violations
+#                       and includes the "entrywise rounding step" (see paper)
+# maxits = maximum number of iterations to run before terminating
+# stagnationTol = if the QP objective score doesn't change by at least this much in one pass
+#               through the constraints, terminate early. This isn't very useful and can be ignored.
+#               It was only useful for catching bugs in early stages of the development of this code, and
+#               shouldn't come into play unless perhaps you want to stop the code
+#               early if Dykstra's method isn't making progress fast enough for it to
+#               be worthwhile.
+function DykstraSC(A::SparseMatrixCSC{Float64,Int64},GapTol::Float64=1e-3,ConTol::Float64=1e-5,
                 lam::Float64=0.1,filename::String="DykstraLeightonRaoOutput",gam::Float64=10.0,
-                maxits::Int64=1000,statusFrequency::Int64=20,stagnationTol::Float64=1e-12)
+                maxits::Int64=1000,statusFrequency::Int64=5,stagnationTol::Float64=1e-12)
 
         n = size(A,1)
         open(filename, "w") do f
@@ -173,14 +193,16 @@ function report_progress_DykstraLR(A::SparseMatrixCSC{Float64,Int64},X::Matrix{F
         DualQP = -BtDual/(gam) - xWx/(2*gam)
         gap = (PrimalQP-DualQP)/DualQP
 
-        # Check if progress has stagnated too much
+        # Check if progress has "stagnated", or if Dykstra just isn't making
+        # fast enough progress for you to bother waiting until convergence.
         if iter > 2
                 stagnated = stagnationCheck(primals[end],PrimalQP,duals[end],DualQP,stagnationTol)
         else
                 stagnated = false
         end
-        # Every "statusFrequency" iterations, fully check constraints to find
-        # the magnitude of the worst violation.
+
+        # Every "statusFrequency" number of iterations, fully check constraints
+        # to find the magnitude of the worst violation.
         # Also, try rounding the current solution if we are close to convergence
         roundconverge = false
         specialPrint = false
@@ -226,19 +248,20 @@ function report_progress_DykstraLR(A::SparseMatrixCSC{Float64,Int64},X::Matrix{F
         push!(ConViolation,lastConCheck)
         push!(LPobjs,objective)
 
+        # Round things to print out results nicely
         gapround = round(gap,5)
         PriRound = round(PrimalQP,5)
         DuRound = round(DualQP,5)
         ob = round(objective,3)
         time = round(triTime,3)
         tr = round(lastConCheck,5)
-
         Bty =  round(-BtDual/(gam),4)
         println("Iter $iter: Dual = $DuRound, Primal = $PriRound, gap = $gapround, ConVio = $tr, 3Loop = $time, Obj: $ob")
         open(filename,"a") do f
             write(f, "Iter $iter: Dual = $DuRound, Primal = $PriRound, gap = $gapround, ConVio = $tr, 3Loop = $time, Obj: $ob \n")
         end
 
+        # Print something extra if you perform the entrywise rounding step
         if specialPrint
                 PR = round(PrimalRound,5); rgap = round(roundedGap,5); rTri = round(roundTri,5)
                 println("\t Rounded: \tNewPrimal = $PR, gap = $rgap, ConVio = $rTri")

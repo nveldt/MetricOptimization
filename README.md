@@ -5,11 +5,30 @@ This folder contains code for algorithms and experiments associated with the fol
 A Projection Method for Metric-Constrained Optimization
 (Nate Veldt, David Gleich, Anthony Wirth, and James Saunderson)
 
-In particular this contains Julia implementations of DykstraCC and DykstraSC: projection-based methods for solving convex relaxations of correlation clustering and sparsest cut objective respectively.
+https://arxiv.org/abs/1806.01678
+
+In particular this repository contains Julia implementations of DykstraCC and DykstraSC: projection-based methods for solving convex relaxations of the correlation clustering and sparsest cut graph clustering objectives respectively.
 
 There are two directories, one for experiments involving the sparsest cut relaxation, and one for the correlation clustering relaxations.
 
-These are compared against running Gurobi optimization software. A free academic license for Gurobi can be obtained online at Gurobi.com.
+### Graphs
 
-Graphs can be obtained online at the Suitesparse Matrix Collection, and stored in the "Graphs" folder. You should make graphs unweighted and undirected, and take the largest connected component if you wish to reproduce experiments from the paper.
+Graphs can be obtained online at the Suitesparse Matrix Collection (https://sparse.tamu.edu/), and stored in the "graphs" folder. You should make graphs unweighted and undirected, and take the largest connected component if you wish to reproduce experiments from the paper. The folder already containes three real-world networks for you to test the algorithms on.
 
+### Important Julia Packages
+
+For the experiments, we use JuMP and Gurobi packages in Julia, which you will need to have installed. Note that you also need to obtain a license at Gurobi.com in order to run Gurobi. 
+
+
+For some convergence plots we use Plots.jl, but this isn't necessary for running the algorithm itself.
+
+### Matlab Plots
+
+Many of our plots are also produced using Matlab. Examples are given. We include data for running our algorithms on the graphs described in the paper. You can produce convergence plots for any of the experiments in the paper with the code given here.
+
+All of these plots could also be generated using Plots.jl.
+
+
+### LambdaCC Code
+
+The correlation clustering folder includes code for solving the LP relaxation of the LambdaCC objective function, introduced in the paper "A Correlation Clustering Framework for Community Detection" (Nate Veldt, David Gleich, and Anthony Wirth).

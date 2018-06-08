@@ -2,8 +2,8 @@ using JuMP
 using Gurobi
 
 # Sets up the full constraint matrix and calls Gurobi.
-# Default time limit is a week.
-function LeightonRao(A,time_limit::Int64=604800,FeasTol::Float64=1e-6,SolverMethod::Int64=2, CrossoverStrategy::Int64 =0, OutputFile::String = "LastGurobiOutput", BarrierGapTol::Float64=1e-8, OptTol::Float64=1e-4)
+# Default time limit is an hour.
+function LeightonRao(A,time_limit::Int64=3600,FeasTol::Float64=1e-6,SolverMethod::Int64=2, CrossoverStrategy::Int64 =0, OutputFile::String = "LastGurobiOutput", BarrierGapTol::Float64=1e-8, OptTol::Float64=1e-4)
     n = size(A,1)
     A = A - diagm(diag(A))
 
@@ -52,8 +52,9 @@ function LeightonRao(A,time_limit::Int64=604800,FeasTol::Float64=1e-6,SolverMeth
     return D+D', LP, LPstatus
 end
 
-## Solve the problem on a subset of constraints, then check for violations, update constraints, and resolve
-function LazyLeightonRao(A,time_limit::Int64=604800,FeasTol::Float64=1e-6,SolverMethod::Int64=2, CrossoverStrategy::Int64 =0, OutputFile::String = "LastGurobiOutput", BarrierGapTol::Float64=1e-8, OptTol::Float64=1e-4)
+## Solve the problem on a subset of constraints, then check for violations, update constraints, and re-solve.
+# This isn't really that useful for the Leighton-Rao relaxation. See paper for details.
+function LazyLeightonRao(A,time_limit::Int64=3600,FeasTol::Float64=1e-6,SolverMethod::Int64=2, CrossoverStrategy::Int64 =0, OutputFile::String = "LastGurobiOutput", BarrierGapTol::Float64=1e-8, OptTol::Float64=1e-4)
     n = size(A,1)
     A = A - diagm(diag(A))
 
@@ -142,7 +143,6 @@ function LazyLeightonRao(A,time_limit::Int64=604800,FeasTol::Float64=1e-6,Solver
          println("Another solve took: ", toq())
      end
 
-     writeLP(m,"GurobiLP_Lazy")
     # Return the objective score and the distance matrix
     D = getvalue(x)
     LP = sum((A[i,j])*D[i,j] for i=1:n-1 for j = i+1:n)

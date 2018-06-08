@@ -6,12 +6,12 @@ include("software/DykstraSC_Helper.jl")
 
 # Run DykstraSC for a single graph. Store graph-specific stats in a .mat file
 # and a text file. Add the basic stats to "outputfile", but don't overwrite it.
-function Run_Dykstra_LR(name::String,gam::Float64,outputfile::String,filenote::String,lam::Float64,ConTol::Float64,GapTol::Float64,maxits::Int64)
+function Run_Dykstra_SC(name::String,gam::Float64,outputfile::String,filenote::String,lam::Float64,ConTol::Float64,GapTol::Float64,maxits::Int64)
 
 graphoutput = "output/"*name*"_"*filenote
 
 R = 0
-mat = matread("../Code/graphs/"*name*".mat")
+mat = matread("../graphs/"*name*".mat")
 A = sparse(mat["A"])
 n = size(A,1)
 d = sum(A,2)
@@ -65,26 +65,26 @@ matwrite(graphoutput*".mat",Dict(
 end
 
 function RunSmallerGraphs(filetag::String,gamma::Float64)
-Names = ["lesmis","dolphins”,”karate”]
+Names = ["lesmis","polbooks","karate"]
 
 for i = 1:size(Names,1)
     name = Names[i]
     mat = matread("../graphs/"*name*".mat")
     A = sparse(mat["A"])
     n = size(A,1)
-    Run_Dykstra_LR(name,gamma,"Dykstra_LR_all_"*filetag,"Gam5Lam1overN",1/n,1e-8,1e-4,500000)
+    Run_Dykstra_SC(name,gamma,"Dykstra_SC_all_"*filetag,"Gam5Lam1overN",1/n,1e-8,1e-4,500000)
 end
 
 end
 
-function RunMultipleGurobiLR(filetag::String,FullFlag,time_limit::Int64)
+function RunMultipleGurobiSC(filetag::String,FullFlag,time_limit::Int64)
 
-Names = ["lesmis","dolphins”,”karate”]
+Names = ["lesmis","polbooks","karate"]
 mkdir(filetag)
-outputstring = filetag*"/GurobiLR_small.txt"
+outputstring = filetag*"/GurobiSC_small.txt"
 for i = 1:size(Names,1)
     name = Names[i]
-mat = matread(“../graphs/"*name*".mat")
+mat = matread("../graphs/"*name*".mat")
 A = mat["A"]
 
 OutputFile = filetag*"/Gurobi_"*name*"_output"
@@ -115,10 +115,10 @@ end
 # FullFlag = 1 if you want to construct the entire constraint matrix
 # FullFlag = 0 if you want to try the Lazy Constraints method, which doesn’t work very well for the Leighton-Rao Sparsest Cut relaxation.
 
-function RunGurobiLR(name::String,filetag::String,FullFlag,time_limit::Int64,contol::Float64=1e-8,GurobiSolver::Int64 = 2)
+function RunGurobiSC(name::String,filetag::String="",FullFlag::Bool=true,time_limit::Int64=3600,contol::Float64=1e-8,GurobiSolver::Int64 = 2)
 
-outputstring = "GurobiLR_"*name*"_"*filetag*".txt"
-mat = matread(“../graphs/"*name*".mat")
+outputstring = "output/GurobiLR_"*name*"_"*filetag*".txt"
+mat = matread("../graphs/"*name*".mat")
 A = mat["A"]
 
 OutputFile = "output/Gurobi_"*name*"_output"
@@ -137,10 +137,9 @@ matwrite("output/"name*"_Gurobi.mat", Dict( "X" => X, "LR" => LR, "time" => time
 
 open(outputstring,"a") do f
     write(f, "Graph: "*name*"\n")
-    write(f, "Leighton Rao Relaxation: $LR \n")
-    write(f, "Time for Lazy LR method: $timeGurobiLR ")
+    write(f, "Leighton Rao Relaxation LP score: $LR \n")
+    write(f, "Gurobi Time: $timeGurobiLR ")
     write(f,"\n")
 end
-
 
 end
