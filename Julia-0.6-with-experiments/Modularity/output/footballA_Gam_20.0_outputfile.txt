@@ -1,0 +1,10 @@
+Output from running the CC Dykstra MCLP method 
+Graph: footballA
+Input Parameters: Gamma = 20.0, GapTol = 0.0001, ConTol = 0.001 
+Output satisfies constraints to within 0.0009947960052798521 
+Relative Duality Gap = -1.232620828360997e-6 
+LP Relaxation Obj: 178.8234835534481 
+Compute Time: 19.390965376A priori approx ratio = 1.05
+A posteriori approx ratio = 1.0057741850358533
+next_corrections stores 30806 nonzero dual variables. 
+

@@ -1,0 +1,10 @@
+Output from running the CC Dykstra MCLP method 
+Graph: polblogsA
+Input Parameters: Gamma = 2.0, GapTol = 0.0001, ConTol = 0.01 
+Output satisfies constraints to within 0.00877 
+Relative Duality Gap = 7.131692795146278e-8 
+LP Relaxation Obj: 6762.719392130423 
+Compute Time: 3637.93327227A priori approx ratio = 1.5
+A posteriori approx ratio = 1.2703988195364286
+next_corrections stores 1387193 nonzero dual variables. 
+

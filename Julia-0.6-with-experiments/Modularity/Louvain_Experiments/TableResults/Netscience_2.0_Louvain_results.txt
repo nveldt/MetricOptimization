@@ -1,0 +1,11 @@
+Modularity bound: Netscience, 0.865219, 56.301949
+Randomized Louvain: Best = 0.848365 and Median = 0.841673 
+CGW: 0.844591 	 0.839271 
+CGW + Louv: 0.848587 	 0.848465 
+3LP 2: 0.830982 	 0.827631 
+3LP 2 + Louv: 0.848587 	 0.848503 
+Netscience & 56 & 0.8652 & \emph{best}: & 0.8484 & 0.8446 & 0.8486 & 0.8310 & 0.8486
+$n = 379 $ &  &  & 	 \emph{med}: & 0.8417 & 0.8393 & 0.8485 & 0.8276 & 0.8485
+Extended Results
+Netscience & 56 & 0.8652 & \emph{best}: & 0.8484 & 0.8310 & 0.8486 
+$n = 379 $ &  &  & 	 \emph{med}: & 0.8417 & 0.8276 & 0.8485  

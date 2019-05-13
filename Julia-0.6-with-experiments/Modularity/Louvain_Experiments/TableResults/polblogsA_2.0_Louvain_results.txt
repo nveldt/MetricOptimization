@@ -1,0 +1,11 @@
+Modularity bound: polblogsA, 0.517009, 3637.933272
+Randomized Louvain: Best = 0.427022 and Median = 0.426808 
+CGW: 0.010903 	 0.009424 
+CGW + Louv: 0.427041 	 0.426985 
+3LP 2: 0.165800 	 0.129959 
+3LP 2 + Louv: 0.427039 	 0.427001 
+polblogsA & 3638 & 0.5170 & \emph{best}: & 0.4270 & 0.0109 & 0.4270 & 0.1658 & 0.4270
+$n = 1222 $ &  &  & 	 \emph{med}: & 0.4268 & 0.0094 & 0.4270 & 0.1300 & 0.4270
+Extended Results
+polblogsA & 3638 & 0.5170 & \emph{best}: & 0.4270 & 0.1658 & 0.4270 
+$n = 1222 $ &  &  & 	 \emph{med}: & 0.4268 & 0.1300 & 0.4270  

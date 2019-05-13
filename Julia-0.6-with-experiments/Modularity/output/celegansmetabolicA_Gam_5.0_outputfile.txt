@@ -1,0 +1,10 @@
+Output from running the CC Dykstra MCLP method 
+Graph: celegansmetabolicA
+Input Parameters: Gamma = 5.0, GapTol = 0.0001, ConTol = 0.01 
+Output satisfies constraints to within 0.009098189647828825 
+Relative Duality Gap = 1.0023085869908642e-5 
+LP Relaxation Obj: 691.3922810810758 
+Compute Time: 303.542400799A priori approx ratio = 1.2
+A posteriori approx ratio = 1.1097494863848807
+next_corrections stores 134678 nonzero dual variables. 
+

@@ -1,0 +1,11 @@
+Modularity bound: celegansmetabolicA, 0.547921, 145.988719
+Randomized Louvain: Best = 0.447825 and Median = 0.442110 
+CGW: 0.202086 	 0.186059 
+CGW + Louv: 0.449788 	 0.447120 
+3LP 2: 0.264034 	 0.247865 
+3LP 2 + Louv: 0.451729 	 0.448541 
+celegansmetabolicA & 146 & 0.5479 & \emph{best}: & 0.4478 & 0.2021 & 0.4498 & 0.2640 & 0.4517
+$n = 453 $ &  &  & 	 \emph{med}: & 0.4421 & 0.1861 & 0.4471 & 0.2479 & 0.4485
+Extended Results
+celegansmetabolicA & 146 & 0.5479 & \emph{best}: & 0.4478 & 0.2640 & 0.4517 
+$n = 453 $ &  &  & 	 \emph{med}: & 0.4421 & 0.2479 & 0.4485  
